@@ -14,10 +14,7 @@ public class Exercise4 {
         people.add(new Person(22, "Yana", "Hvozdetska"));
         people.add(new Person(25, "Nicolai", "Ionuta"));
 
-        for (Person p : people) {
-
-            System.out.println(p.getAge() + " " + p.getName() + " " + p.getLastName());
-        }
+        people.stream().map(p -> p.getAge() + " " + p.getName() + " " + p.getLastName()).forEach(System.out::println);
     }
 }
 
