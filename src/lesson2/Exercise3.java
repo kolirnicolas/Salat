@@ -6,33 +6,61 @@ import java.util.Objects;
 public class Exercise3 {
     public static void main(String[] args) {
 
-        Persons person = new Persons(24, "Sania", "Paskar");
-        Persons person1 = new Persons(22, "Yana", "Ionuta");
-        Persons person2 = new Persons(25, "Nicolai", "Ionuta");
-        if ((Objects.equals(person.lastName, person1.lastName))) {
-            person.equals(person1);
-        }
-        if (Objects.equals(person1.lastName, person2.lastName)) {
-            person1.equals(person2);
-        }
-        if (Objects.equals(person2.lastName, person.lastName)) {
-            person2.equals(person);
-        }
-        final var strings = new HashSet<String>();
-        strings.add(person.lastName);
-        strings.add(person1.lastName);
-        strings.add(person2.lastName);
+        PersonExercise3 person = new PersonExercise3(24, "Sania", "Paskar");
+        PersonExercise3 person1 = new PersonExercise3(22, "Yana", "Ionuta");
+        PersonExercise3 person2 = new PersonExercise3(25, "Nicolai", "Ionuta");
+
+        final var strings = new HashSet<PersonExercise3>();
+        strings.add(person);
+        strings.add(person1);
+        strings.add(person2);
         strings.forEach(System.out::println);
     }
 }
-class Persons {
-    int age;
-    String name;
-    String lastName;
-    public Persons(int age, String name, String lastName) {
+
+class PersonExercise3 {
+    private final int age;
+    private final String name;
+    private final String lastName;
+
+    public PersonExercise3(int age, String name, String lastName) {
         this.age = age;
         this.name = name;
         this.lastName = lastName;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        PersonExercise3 that = (PersonExercise3) o;
+        return lastName.equals(that.lastName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(lastName);
+    }
+
+    @Override
+    public String toString() {
+        return "PersonExercise3{" +
+                "age=" + age +
+                ", name='" + name + '\'' +
+                ", lastName='" + lastName + '\'' +
+                '}';
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getLastName() {
+        return lastName;
     }
 }
 
